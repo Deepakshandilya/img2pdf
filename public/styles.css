@@ -1,0 +1,109 @@
+/* styles.css */
+
+/* Dark background and orange theme */
+body {
+  background-color: #1e1e1e;
+  color: #f2f2f2;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  background: #262626;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for the container */
+.container:hover {
+  box-shadow: 0 12px 40px rgba(255, 165, 0, 0.2); /* Soft orange glow */
+}
+
+/* Smooth transition for the container */
+h1 {
+  color: #ffa500; /* Orange title */
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Custom file input label */
+label {
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+label:hover {
+  background-color: #ffa500;
+}
+
+button {
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #ffa500;
+}
+
+/* Loading spinner */
+.loading {
+  font-size: 18px;
+  color: #ffa500;
+  margin-top: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Download button styling */
+.download-btn {
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Animation for download section */
+.download-section {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to PDF Converter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Image to PDF Converter</h1>
+    <form id="uploadForm" enctype="multipart/form-data" method="POST">
+      <!-- Label for custom file input -->
+      <label for="images">Select Images</label>
+      <input type="file" name="images" id="images" multiple accept="image/*" required>
+
+      <!-- Convert to PDF button -->
+      <button type="submit" class="convert-btn">Convert to PDF</button>
+    </form>
+
+    <!-- Loading spinner -->
+    <div id="loading" class="loading" style="display: none;">Converting...</div>
+
+    <!-- Download section -->
+    <div id="download-section" class="download-section" style="display: none;">
+      <a id="downloadLink" download="output.pdf">
+        <button class="download-btn">Download PDF</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('uploadForm').onsubmit = async (e) => {
+      e.preventDefault();
+      document.getElementById('loading').style.display = 'block';
+      const formData = new FormData(e.target);
+      
+      try {
+        const response = await fetch('/convert', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+        document.getElementById('loading').style.display = 'none';
+
+        if (response.ok && result.pdfPath) {
+          document.getElementById('download-section').style.display = 'block';
+          const downloadLink = document.getElementById('downloadLink');
+          downloadLink.href = result.pdfPath;
+        } else {
+          alert('Error generating PDF');
+        }
+      } catch (error) {
+        document.getElementById('loading').style.display = 'none';
+        alert('An error occurred while converting images to PDF.');
+      }
+    };
+  </script>
+</body>
+</html>
